@@ -1,8 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { StyleSheet, Text, View, ViewStyle } from "react-native";
 import { Camera } from "expo-camera";
 
-const styles = StyleSheet.create({
+interface Styles {
+  container: ViewStyle;
+}
+
+const styles = StyleSheet.create<Styles>({
   container: {
     flex: 1,
     backgroundColor: "#fff",
@@ -12,7 +16,7 @@ const styles = StyleSheet.create({
 });
 
 export default function App() {
-  const [hasPermission, setHasPermission] = useState(null);
+  const [hasPermission, setHasPermission] = useState<null | boolean>(null);
 
   useEffect(() => {
     (async () => {
